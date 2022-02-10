@@ -1,0 +1,114 @@
+﻿<Window x:Class="ExplorerSwitch.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:local="clr-namespace:ExplorerSwitch"
+        xmlns:properties="clr-namespace:ExplorerSwitch.Properties"
+        Icon="window_explorer.ico"
+        mc:Ignorable="d"
+        Title="{x:Static properties:Resources.ApplicationTitle}"
+        WindowStartupLocation="CenterScreen"
+        Height="400"
+        Width="700">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0"
+                   Source="/res/kiwi_big.png"></Image>
+            <TextBlock Grid.Row="1"
+                       HorizontalAlignment="Center"
+                       Margin="0,10,0,0">           
+                <Hyperlink NavigateUri="https://ekiwi-blog.de"
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    https://ekiwi-blog.de
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+
+        <GroupBox Grid.Column="1"
+                  Header="{x:Static properties:Resources.GroupBox_Header}">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           Grid.Column="0"
+                           FontWeight="DemiBold"
+                           Text="{x:Static properties:Resources.Classic_context_menu}"></TextBlock>
+                <TextBlock Grid.Row="0"
+                           HorizontalAlignment="Center"
+                           Grid.Column="1"
+                           FontWeight="DemiBold"
+                           Text="{x:Static properties:Resources.Modern_context_menu}"></TextBlock>
+
+                <Border x:Name="BorderClassic"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        BorderThickness="1"
+                        Margin="5"
+                        BorderBrush="Red">
+                    <Image Source="/res/classic_en.png"></Image>
+                </Border>
+
+
+                <Border x:Name="BorderModern"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        BorderThickness="1"
+                        Margin="5"
+                        BorderBrush="Red">
+                    <Image Margin="5"
+                           Source="/res/modern_en.png"></Image>
+                </Border>
+
+
+
+                <telerik:RadButton x:Name="ButtonClassicMenu"
+                                   Click="ButtonClassicMenu_OnClick"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                   Content="{x:Static properties:Resources.ButtonClassicMenu_Content}"
+                                   Margin="5"></telerik:RadButton>
+
+                <telerik:RadButton x:Name="ButtonNewMenu"
+                                   Click="ButtonNewMenu_OnClick"
+                                   Grid.Row="2"
+                                   Grid.Column="1"
+                                   Content="{x:Static properties:Resources.ButtonNewMenu_Content}"
+                                   Margin="5"></telerik:RadButton>
+
+                <StackPanel Grid.Row="3"
+                            Margin="5,0,0,0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Orientation="Horizontal">
+                    <TextBlock x:Name="TextBlockCurrentModeLabel"
+                               Text="{x:Static properties:Resources.TextBlockCurrentModeLabel_Text}"></TextBlock>
+                    <TextBlock x:Name="TextBlockCurrentMode"
+                               Margin="5,0,0,0"
+                               FontWeight="Bold"
+                               Text=""></TextBlock>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>
