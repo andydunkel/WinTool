@@ -1,6 +1,11 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.Net;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using WinToolLogic;
 using WinToolLogic.Registry;
 
 namespace ExplorerSwitch
@@ -20,6 +25,9 @@ namespace ExplorerSwitch
             InitializeComponent();
             _registryUtil = new RegistryUtil();
             SetCurrentMode();
+
+            ImageClassic.Source = new BitmapImage(new Uri("pack://application:,,,/ExplorerSwitch;component/res/classic_" + LanguageUtil.GetLanguageCode() + ".png"));
+            ImageModern.Source = new BitmapImage(new Uri("pack://application:,,,/ExplorerSwitch;component/res/modern_" + LanguageUtil.GetLanguageCode() + ".png"));
         }
 
         private string _currentMode = "";
@@ -46,7 +54,14 @@ namespace ExplorerSwitch
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            if (LanguageUtil.GetLanguageCode() == "en")
+            {
+                Process.Start(new ProcessStartInfo("https://ekiwi-blog.de/en/"));
+            }
+            else
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            }
             e.Handled = true;
         }
 

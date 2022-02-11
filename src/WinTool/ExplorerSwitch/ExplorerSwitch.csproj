@@ -132,5 +132,9 @@
   <ItemGroup>
     <Resource Include="window_explorer.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\classic_de.png" />
+    <Resource Include="res\modern_de.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
